@@ -2,6 +2,9 @@
 
   <ion-navbar>
     <ion-title>National Parks</ion-title>
+    <ion-toolbar>
+      <ion-searchbar [(ngModel)]="seachQuery" (ionInput)="getParks($event)" (ionClear)="resetList"></ion-searchbar>
+    </ion-toolbar>
   </ion-navbar>
 
 </ion-header>

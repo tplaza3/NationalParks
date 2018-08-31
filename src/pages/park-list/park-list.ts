@@ -10,11 +10,12 @@ import { Park } from "../../types/Park";
 })
 export class ParkListPage {
   parks: Park[];
+  searchQuery: string = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private parkDataService: ParkDataService) {
-    parkDataService.getParks().then((parksData) => {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public parkDataService: ParkDataService) {
+    parkDataService.load().then((parksData) => {
       this.parks = parksData;
-    })
+    });
   }
 
   ionViewDidLoad() {
@@ -27,5 +28,34 @@ export class ParkListPage {
   }
 
 
+  getParks(event) {
+
+    this.parkDataService.load().then((parksData) => {
+      this.parks = parksData;
+    });
+
+    let queryString = event.target.value;
+
+    console.log(queryString);
+    if (queryString !== undefined) {
+
+      if (queryString.trim() == '') {
+        return;
+      }
+
+      this.parkDataService.getFilteredParks(queryString).then((parkResults) => {
+        this.parks = parkResults;
+      });
+
+    }
+
+    console.log("get parks count: " + this.parks.length);
+  }
+
+  resetList(event) {
+    this.parkDataService.load().then((parksData) => {
+      this.parks = parksData;
+    });
+  }
 
 }
