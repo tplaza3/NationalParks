@@ -27,11 +27,28 @@ export class ParkDataService {
     });
   }
 
-  getParks(): any {
-    return this.load().then((parkData) => {
-      return parkData;
-    }).catch((e) => {
-      console.log(e);
+  getFilteredParks(queryString: string) {
+
+    return this.load().then((parks) =>{
+      let filteredParks: any = [];
+
+      for (let park of parks) {
+        if (park.name.toLowerCase().indexOf(queryString.toLowerCase()) > -1) {
+          console.log("park pushed");
+          filteredParks.push(park);
+        }
+      }
+
+      return filteredParks;
     });
+
+    // getParks(): any {
+    //   return this.load().then((parkData) => {
+    //     return parkData;
+    //   }).catch((e) => {
+    //     console.log(e);
+    //   });
+    // }
+
   }
 }
