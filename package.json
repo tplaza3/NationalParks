@@ -1,8 +1,8 @@
 {
   "name": "NationalParks",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "version": "1.0.0",
+  "author": "Tony Plaza",
+  "homepage": "https://github.com/tplaza3",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -43,7 +43,7 @@
     "typescript": "2.4.2",
     "ws": "3.3.2"
   },
-  "description": "An Ionic project",
+  "description": "A National Parks project built with ionic and cordova",
   "cordova": {
     "plugins": {
       "ionic-plugin-keyboard": {},
